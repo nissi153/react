@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>리액트 기초</title>
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <h1>엘리먼트 업데이트</h1>
+    <!-- 기존 엘리먼트를 변경하는 것이 아니라 새로운 엘리먼트를 바꿔치기하는 것이다. -->
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+      // 리액트 함수 컴포넌트 정의
+      function Clock() {
+        return <h2>현재 시간 : {new Date().toLocaleTimeString()}</h2>;
+      }
+
+      function tick() {
+        // ReactDOM을 사용하여 컴포넌트를 root에 렌더링
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        // JSX 속성을 통해 인수(매개변수)값을 전달하기
+        root.render(<Clock />);
+      }
+      setInterval(tick, 1000);
+    </script>
+  </body>
+</html>

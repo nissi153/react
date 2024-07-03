@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>리액트 기초</title>
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <h1>JSX 사용 - 클래스형 컴포넌트</h1>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+      // 리액트 클래스 컴포넌트 정의
+      class Greeting extends React.Component {
+        render() {
+          return (
+            // JSX를 사용한 예
+            <h1 className="greeting">Hello world!</h1>
+          );
+        }
+      }
+
+      // ReactDOM을 사용하여 컴포넌트를 root에 렌더링
+      // render(element, container[, callback])
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(React.createElement(Greeting));
+    </script>
+  </body>
+</html>

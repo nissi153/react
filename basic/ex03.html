@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>리액트 기초</title>
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+  </head>
+  <body>
+    <h1>리액트 함수 - React.createElement</h1>
+
+    <div id="root"></div>
+
+    <script>
+      function Greeting() {
+        return React.createElement(
+          "h1",
+          { className: "greeting" },
+          "Hello world1"
+        );
+      }
+
+      // const element = createElement(type, props, ...children)
+      const element = React.createElement(
+        "h1",
+        { className: "greeting" },
+        "Hello world2"
+      );
+
+      // ReactDOM을 사용하여 컴포넌트를 root에 렌더링
+      // render(element, container[, callback])
+
+      //New method in React 18
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(element);
+
+      // until React 17
+      //ReactDOM.render(element, document.getElementById("root"));
+    </script>
+  </body>
+</html>
