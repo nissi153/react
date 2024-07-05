@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import PostList from "../list/PostList";
@@ -22,7 +22,13 @@ const Container = styled.div`
 `;
 
 function MainPage() {
+  const [posts, setPosts] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedPosts = JSON.parse(localStorage.getItem("posts")) || [];
+    setPosts(storedPosts);
+  }, []);
 
   return (
     <Wrapper>
@@ -36,7 +42,7 @@ function MainPage() {
         <div style={{ height: "10px" }}></div>
 
         <PostList
-          posts={data}
+          posts={posts}
           onClickItem={(item) => {
             navigate(`/post/${item.id}`);
           }}

@@ -27,6 +27,22 @@ function PostWritePage() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
+  const handleSubmit = () => {
+    // 로컬 스토리지에 저장
+    const newPost = {
+      id: Date.now(), // 임의의 고유 ID 생성
+      title,
+      content,
+      comments: [], // 빈 댓글 배열 초기화
+    };
+    const existingPosts = JSON.parse(localStorage.getItem("posts")) || [];
+    existingPosts.push(newPost);
+    localStorage.setItem("posts", JSON.stringify(existingPosts));
+
+    // 홈 페이지로 이동
+    navigate("/");
+  };
+
   return (
     <Wrapper>
       <Container>
@@ -44,12 +60,7 @@ function PostWritePage() {
             setContent(event.target.value);
           }}
         />
-        <Button
-          title="글 작성하기"
-          onClick={() => {
-            navigate("/");
-          }}
-        />
+        <Button title="글 작성하기" onClick={handleSubmit} />
       </Container>
     </Wrapper>
   );
