@@ -86,7 +86,7 @@ const Home = () => {
               <a href={`/post/${post._id}`}>
                 <span>{post.title}</span>
                 <span className="article-list-date">
-                  {new Date(post.createdAt).toDateString()}
+                  {new Date(post.createdAt).toLocaleDateString()}
                 </span>
               </a>
             </ArticleItem>
