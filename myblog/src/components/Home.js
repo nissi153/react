@@ -7,6 +7,9 @@ import { fetchRecentPosts } from "../services/apiService";
 
 const Main = styled.main`
   padding: 20px;
+  margin: 0 auto;
+  max-width: 982px;
+  background: #f8f9fa;
 `;
 
 const TopSection = styled.div`

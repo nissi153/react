@@ -5,9 +5,11 @@ import { useParams } from "react-router-dom"; // URL 파라미터를 가져오�
 
 const Container = styled.div`
   width: 100%;
-  max-width: 960px;
-  margin: 0 auto;
   padding: 20px;
+
+  margin: 0 auto;
+  max-width: 982px;
+  background: #f8f9fa;
 `;
 
 const Main = styled.main`

@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const HeaderContainer = styled.header`
+  margin: 0 auto;
+  max-width: 982px;
   display: flex;
   justify-content: space-between;
   align-items: center;
