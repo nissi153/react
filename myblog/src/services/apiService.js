@@ -28,21 +28,21 @@ export const fetchRecentPosts = async () => {
   }
 };
 
-export const fetchPostById = async (id) => {
+export const getPost = async (id) => {
   try {
     const response = await fetch(`${BASE_URL}/posts/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
-      credentials: "include",
+      credentials: "include", // Include credentials for authentication
     });
 
     if (!response.ok) {
-      throw new Error("서버에서 데이터를 가져오는 데 실패했습니다.");
+      throw new Error("Failed to fetch post.");
     }
 
-    return response.json();
+    return await response.json();
   } catch (error) {
     console.error("Error fetching post:", error.message);
     throw error;
@@ -67,6 +67,69 @@ export const login = async (username, password) => {
     return data; // JWT 토큰 반환
   } catch (error) {
     console.error("Error logging in:", error.message);
+    throw error;
+  }
+};
+
+export const deletePost = async (postId) => {
+  try {
+    const response = await fetch(`${BASE_URL}/posts/${postId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to delete the post.");
+    }
+  } catch (error) {
+    console.error("Error deleting post:", error.message);
+    throw error;
+  }
+};
+
+export const createPost = async (post) => {
+  try {
+    const response = await fetch(`${BASE_URL}/posts`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include", // Include credentials for authentication
+      body: JSON.stringify(post),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to create post.");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error creating post:", error.message);
+    throw error;
+  }
+};
+
+export const updatePost = async (id, post) => {
+  try {
+    const response = await fetch(`${BASE_URL}/posts/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include", // Include credentials for authentication
+      body: JSON.stringify(post),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to update post.");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error updating post:", error.message);
     throw error;
   }
 };

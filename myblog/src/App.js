@@ -6,6 +6,8 @@ import Admin from "./components/Admin";
 import Post from "./components/Post";
 import Header from "./components/Header";
 import AllPosts from "./components/AllPosts";
+import CreatePost from "./components/CreatePost";
+import EditPost from "./components/EditPost";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -18,13 +20,14 @@ function App() {
   const handleLogout = () => {
     console.log("handleLogout called");
     setIsLoggedIn(false);
+    document.cookie = "token=; Max-Age=0; path=/;"; // Clear the token
     alert("로그아웃 되었습니다.");
     window.location.href = "/";
   };
 
   return (
     <Router>
-      <Header isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+      <Header isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
@@ -32,6 +35,8 @@ function App() {
         <Route path="/admin" element={<Admin onLogin={handleLogin} />} />
         <Route path="/post/:id" element={<Post />} />
         <Route path="/allPosts" element={<AllPosts />} />
+        <Route path="/add" element={<CreatePost />} />
+        <Route path="/edit/:id" element={<EditPost />} />
       </Routes>
     </Router>
   );

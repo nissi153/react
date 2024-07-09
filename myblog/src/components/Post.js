@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { fetchPostById } from "../services/apiService"; // API 서비스 함수 가져오기
+import { getPost } from "../services/apiService"; // API 서비스 함수 가져오기
 import { useParams } from "react-router-dom"; // URL 파라미터를 가져오기 위해 사용
 
 const Container = styled.div`
@@ -27,7 +27,7 @@ const Post = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const postData = await fetchPostById(id);
+        const postData = await getPost(id);
         setPost(postData);
       } catch (error) {
         setError(error.message);
