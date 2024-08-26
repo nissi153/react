@@ -14,13 +14,13 @@ function FileUpload(props) {
     const formData = new FormData();
 
     files.map((file) => {
-      formData.append("files", file);
+      formData.append("file", file);
     });
 
     console.log(Array.from(formData));
 
     axios
-      .post("http://localhost:3079/file/uploads", formData, {
+      .post("http://localhost:3030/upload", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
