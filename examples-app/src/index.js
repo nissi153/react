@@ -9,11 +9,11 @@ import ReactDOM from "react-dom/client";
 // import NotificationList from "./6-state/NotificationList";
 // import Accommodate from "./7-hook/Accommodate";
 // import ChartApp from "./16-chart/ChartApp";
-import FileUpload from "./11-form/FileUpload"
+import SignUpForm from "./11-form/SignUpD"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <>
-    <FileUpload />
+    <SignUpForm />
   </>
 );
